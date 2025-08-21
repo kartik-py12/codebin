@@ -19,6 +19,11 @@ A modern, full-stack code snippet sharing platform built with React and Node.js.
 - **Responsive Design**: Modern UI built with React and TailwindCSS
 - **Real-time Feedback**: Toast notifications for user actions
 
+## 📸 Screenshots
+
+<!-- Add screenshots of your application here -->
+*Screenshots will be added here once the application is deployed*
+
 ## 📁 Project Structure
 
 ```
@@ -74,6 +79,37 @@ Before running this project, make sure you have:
 - **Node.js** (v18 or higher)
 - **npm** or **yarn**
 - **MongoDB** (local installation or MongoDB Atlas)
+
+## ⚡ Quick Start
+
+1. **Clone and install dependencies**
+   ```bash
+   git clone https://github.com/kartik-py12/codebin.git
+   cd codebin
+   npm install
+   cd backend && npm install
+   cd ../frontend && npm install && cd ..
+   ```
+
+2. **Set up environment**
+   ```bash
+   cd backend
+   cp .env.example .env  # Create this if needed
+   # Edit .env with your MongoDB URI and JWT secret
+   ```
+
+3. **Start development servers**
+   ```bash
+   # Terminal 1 - Backend
+   cd backend && npx nodemon src/server.js
+   
+   # Terminal 2 - Frontend  
+   cd frontend && npm run dev
+   ```
+
+4. **Open your browser**
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:3000
 
 ## 🚀 Installation
 
