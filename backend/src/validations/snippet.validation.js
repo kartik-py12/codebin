@@ -15,8 +15,9 @@ const snippetValidation = z.object({
         .default("plaintext"),
 
     expiryTime:z
-        .enum(["10m","30m","1h","1d","1w"])
+        .enum(["10m","30m","1h","1d","1w","never"])
         .optional(),
+
 })
 
 const snippetUpdateValidation = z.object({
@@ -36,8 +37,9 @@ const snippetUpdateValidation = z.object({
         .optional(),
 
     expiryTime:z
-        .enum(["10m","30m","1h","1d","1w"])
+        .enum(["10m","30m","1h","1d","1w","never"])
         .optional(),
+        
 }).refine(
     data=>Object.keys(data).length>0,
     {error:"At least one field must be provided for update"}

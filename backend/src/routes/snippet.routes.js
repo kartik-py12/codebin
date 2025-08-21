@@ -6,7 +6,7 @@ import { validate } from "../middleware/validation.middleware.js";
 
 const snippetRoute=express.Router();
 
-snippetRoute.post('/create',protectRoute,validate(snippetValidation),create);
+snippetRoute.post('/create/:shortId',protectRoute,validate(snippetValidation),create);
 snippetRoute.get('/all',protectRoute,viewAll);
 snippetRoute.get('/:shortId',view);
 snippetRoute.put("/:shortId",protectRoute,validate(snippetUpdateValidation),updateSnippet);

@@ -1,6 +1,5 @@
 import snippetModel from "../db/models/snippet.model.js";
 
-import {nanoid} from "nanoid"
 const expiryOptions = new Map([
     ["10m",10*60*1000],
     ["30m",30*60*1000],
@@ -12,6 +11,8 @@ const expiryOptions = new Map([
 export const create = async (req,res) => {
     try {
         const {title,content,language,expiryTime} = req.validated;
+        const shortId = req.params.shortId;
+
         console.log(req.userData);
         const userId = req.userData._id;
         let expiresAt=null;
@@ -21,7 +22,6 @@ export const create = async (req,res) => {
             expiresAt = new Date(Date.now()+durationInMs);
         }
 
-        const shortId = nanoid(8);
 
         const snippet = await snippetModel.create({
             title,
@@ -117,8 +117,12 @@ export const updateSnippet = async (req,res) => {
         for (const key of Object.keys(req.validated)){
             if(allowedFields.includes(key)){
                 if(key=="expiryTime"){
-                    const timeInMs = expiryOptions.get(req.validated[key]);
-                    updates["expiresAt"]= new Date(Date.now()+timeInMs);
+                    if(req.validated[key]!=="never"){
+                        const timeInMs = expiryOptions.get(req.validated[key]);
+                        updates["expiresAt"]= new Date(Date.now()+timeInMs);
+                    }else{
+                        updates["expiresAt"]=null;
+                    }
                 }else{
                     updates[key]=req.validated[key];
                 }

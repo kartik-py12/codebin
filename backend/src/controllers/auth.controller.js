@@ -34,8 +34,11 @@ export const signup = async (req,res) => {
         return res.status(200).json({
             success:true,
             user:{
-                username:username,
-                email:email
+                _id:newUser._id,
+                username:newUser.username,
+                email:newUser.email,
+                createdAt:newUser.createdAt,
+                updatedAt:newUser.updatedAt
             },
             message:"Account created Successfully"
         })
@@ -68,9 +71,18 @@ export const signin = async (req,res) => {
         }
 
         generateToken(user._id,res);
+
+
         
         return res.status(200).json({
             success:true,
+            user:{
+                _id:user._id,
+                username:user.username,
+                email:user.email,
+                createdAt:user.createdAt,
+                updatedAt:user.updatedAt
+            },  
             message:"Signed in successfully "
         })
         
@@ -86,7 +98,7 @@ export const signin = async (req,res) => {
 export const logout = async (req,res) => {
     try {
         res.clearCookie("jwt",{
-            secure:process.env.NODE_ENV!="development",
+            secure:true,
             httpOnly:true,
             sameSite:"none"
         })
