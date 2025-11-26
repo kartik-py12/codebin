@@ -54,7 +54,8 @@ export const viewAll = async (req,res) => {
         if(snippets.length===0){
             return res.status(200).json({
                 success:true,
-                message:"No snippets found"
+                message:"No snippets found",
+                snippets:[]
             })
         }
 
