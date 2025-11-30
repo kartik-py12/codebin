@@ -33,15 +33,13 @@ app.use('/api/auth', authRoute);
 app.use('/api/snippet', snippetRoute);
 
 // Serve static files from frontend build in production
-if (process.env.NODE_ENV === "production") {
-    const frontendPath = path.join(__dirname, "../frontend/dist");
-    app.use(express.static(frontendPath));
+const frontendPath = path.join(__dirname, "../frontend/dist");
+app.use(express.static(frontendPath));
 
-    // Handle client-side routing - serve index.html for all non-API routes
-    app.get("*", (req, res) => {
-        res.sendFile(path.join(frontendPath, "index.html"));
-    });
-}
+// Handle client-side routing - serve index.html for all non-API routes
+app.use((req, res) => {
+    res.sendFile(path.join(frontendPath, "index.html"));
+});
 
 // Export for Vercel serverless
 export default app;
