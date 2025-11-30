@@ -51,7 +51,6 @@ export const viewAll = async (req,res) => {
     try {
         const userId = req.userData._id;
         const snippets = await snippetModel.find({user:userId});
-        console.log(snippets.length);
         if(snippets.length===0){
             return res.status(200).json({
                 success:true,
