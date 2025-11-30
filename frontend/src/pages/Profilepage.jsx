@@ -12,6 +12,7 @@ const Profilepage = () => {
 
     useEffect(()=>{
         getAllSnippets();
+        console.log(Allsnippets);
     },[])
 
     if(isLodingSnippets){
@@ -41,7 +42,7 @@ const Profilepage = () => {
     }
 // → "20 Aug 2025"
 
-    console.log(Allsnippets);
+    // console.log(Allsnippets);
 
   return (
     <div className='text-white flex flex-col mt-10 lg:flex-row gap-y-10  justify-between  lg:gap-x-10 ml-5 mr-5 '>
@@ -59,14 +60,18 @@ const Profilepage = () => {
 
         <div className="flex flex-col flex-1 gap-y-2 p-5 lg:pl-20 lg:pr-20 rounded-2xl bg-gray-900 justify-center">
             <div className="flex justify-between  items-center">
-                <p>My Snippets</p>
+                <p className=''>My Snippets</p>
                 <Link to={"/create"}>
                 <button className='bg-pink-600 text-sm font-medium pl-2 pr-2 p-1 rounded-2xl flex items-center'><Plus className='size-4'/> New Snippet</button>
                 </Link>
             </div>
             
             <div className="overflow-y-auto max-h-120">
-                {Allsnippets.map((snippet)=>(
+ 
+                 {Allsnippets.length === 0 ? 
+                    <p className='text-gray-500 mt-10 text-center'>You have not created any snippets yet.</p>
+                    :
+                    Allsnippets.map((snippet)=>(
                     <div className="flex items-center justify-between pl-4 pr-4 p-1 border border-gray-600 rounded-xl mt-4  ">
                         <div className="">
                             <p className='text-lg font-medium'>{snippet.title}</p>
@@ -78,11 +83,13 @@ const Profilepage = () => {
                             </Link>
                             
                             <Pencil/>
+                            {console.log(snippet)}
 
                             <Trash2 className='text-red-600' onClick={() => deleteSnippet(snippet.shortId)}/>
                         </div>
                     </div>
-                ))}
+                    ))
+                }
             </div>
 
 

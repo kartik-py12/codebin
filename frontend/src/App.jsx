@@ -9,6 +9,7 @@ import {Toaster} from "react-hot-toast";
 import { useAuthStore } from './store/useAuthStore';
 import CreateSnippetPage from './pages/CreateSnippetPage'
 import ViewSnippet from './pages/ViewSnippet'
+import NotFoundPage from './pages/NotFoundPage'
 
 const  App = () => {
   const {checkAuth,authUser,isCheckingAuth} = useAuthStore();
@@ -41,8 +42,10 @@ const  App = () => {
         <Route path='/' element={<Homepage/>}/>
         <Route path='/create' element={authUser ? <CreateSnippetPage/> : <Loginpage/>}/>
         <Route path='/create/:id' element={authUser ? <CreateSnippetPage/> : <Loginpage/>}/>
-        <Route path='/view/:id' element={authUser ? <ViewSnippet/> : <Loginpage/>}/>
+        <Route path='/view/:id' element={<ViewSnippet/>}/>
         <Route path='/profile' element={authUser ?<Profilepage/>:<Loginpage/>}/>
+        <Route path='*' element={<NotFoundPage/>}/>
+
 
       </Routes>
       <Toaster/>
