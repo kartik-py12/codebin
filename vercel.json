@@ -1,29 +1,10 @@
 {
-  "version": 2,
-  "builds": [
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "rewrites": [
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    },
-    {
-      "src": "backend/src/server.js",
-      "use": "@vercel/node"
+      "source": "/(.*)",
+      "destination": "/api"
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/src/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "backend/src/server.js"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
