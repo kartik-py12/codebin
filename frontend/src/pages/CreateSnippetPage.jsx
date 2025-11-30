@@ -132,7 +132,7 @@ const CreateSnippetPage = () => {
                       <div className="text-pink-800 text-sm ">* Create snippet to Generate your url </div>  
                     :
                         <div className="border border-gray-600 group  rounded-lg w-full p-2  flex justify-between items-center">
-                            <p className='text-sm group-hover:text-white transition overflow-hidden duration-700'>https://codebin.vercel.app/view/{shortId}</p>
+                            <p className='text-sm group-hover:text-white transition overflow-hidden duration-700'>https://thecodebin.vercel.app/view/{shortId}</p>
                             <button className='cursor-pointer bg-black' onClick={copyUrl}>
                                 <Copy size={18}/>
                             </button>

@@ -20,7 +20,7 @@ const ViewSnippet = () => {
         })
     }
     const copyUrl = () => {
-        navigator.clipboard.writeText(`https://codebin.vercel.app/view/${shortId}`)
+        navigator.clipboard.writeText(`https://thecodebin.vercel.app/view/${shortId}`)
         .then(()=>{
                 toast.success("Copied!");
         }).catch((err)=>{
