@@ -1,13 +1,23 @@
 {
   "name": "codebin",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
+    "build": "npm install && cd frontend && npm install && npm run build && cd ../backend && npm install",
     "start": "cd backend && node src/server.js",
     "dev:backend": "cd backend && nodemon src/server.js",
     "dev:frontend": "cd frontend && npm run dev"
   },
   "dependencies": {
-    "nanoid": "^5.1.5"
+    "nanoid": "^5.1.5",
+    "express": "^5.1.0",
+    "dotenv": "^17.2.1",
+    "cors": "^2.8.5",
+    "cookie-parser": "^1.4.7",
+    "mongoose": "^8.17.1",
+    "bcrypt": "^6.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "nanoid": "^5.1.5",
+    "zod": "^4.0.17"
   }
 }
