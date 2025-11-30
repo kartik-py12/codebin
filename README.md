@@ -7,7 +7,7 @@
 
 A modern, full-stack code snippet sharing platform built with React and Node.js. Share, store, and manage your code snippets with syntax highlighting, user authentication, and automatic expiration.
 
-🌐 **Live Demo**: [Add your deployment URL here]
+🌐 **Live Demo**: [TheCodeBin](https://thecodebin.vercel.app)
 
 ## 🚀 Features
 
